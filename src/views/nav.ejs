@@ -1,8 +1,17 @@
-<nav>
-  <a href="/">Home</a>
-  <form method="get" action="/contacts/search" class="search-form">
-    <input name="q" type="search" placeholder="search" value="<%= query %>" autofocus/>
-    <input type="submit" style="display: none" />
-  </form>
-  <a href="/contacts/new">New Contact</a>
+<nav class="navbar navbar-static-top">
+	<div class="navbar-brand">
+		<a href="/">Home</a>
+		<form method="get" action="/contacts/search" class="search-form">
+			<div>
+				<input name="q" type="search" placeholder="search" value="<%= query %>" autofocus/>
+				<input type="submit" style="display: none" />
+			</div>
+		</form>
+		<a href="/contacts/new">New Contact</a>
+	</div>
+	<div class="navbar-right">
+		<a href="/signup"><i class="fa fa-user-plus auth"></i></a>
+		<a href="/login"><i class="fa fa-sign-in auth"></i></a>
+	</div>
+
 </nav>

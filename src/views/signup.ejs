@@ -1,0 +1,29 @@
+<%- include ./header %>
+
+	<div class="card">
+		<h2 class="text-center">Sign Up</h2>
+		<div class="card-block">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<form method="post" action="/signup">
+						<div class="form-group">
+							<label for="name">Name:</label>
+							<input type="name" name="name" placeholder="Jane Smith">
+						</div>
+						<div class="form-group">
+							<label for="email">Email:</label>
+							<input type="email" name="email" placeholder="email@email.com">
+						</div>
+						<div class="form-group">
+							<label for="password">Password:</label>
+							<input type="password" name="password" placeholder="password">
+						</div>
+						<input class="btn btn-default" type="submit" name="submit" value="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include ./footer %>
