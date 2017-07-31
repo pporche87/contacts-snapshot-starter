@@ -34,12 +34,9 @@ nav .search-form input {
   border-radius: 5px;
   border: none;
   padding: 0.3em 0.5em;
+	color: black;
 }
 
-/* method for removing border-radius from bootstrap */
-/*.navbar {
-	border-radius: 0px;
-}*/
 .auth {
 	margin-right: 10px;
 	padding: 10px;
