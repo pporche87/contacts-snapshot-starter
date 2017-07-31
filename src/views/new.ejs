@@ -1,18 +1,25 @@
 <%- include header.ejs %>
 
-  <h1>New Contact</h1>
-
-  <form method="post" action="/contacts" class="new-contact-form">
-    <pre class="new-contact-form-errors"></pre>
-    <label>
-      <span>First name:</span>
-      <input type="text" name="first_name" />
-    </label>
-    <label>
-      <span>Last name:</span>
-      <input type="text" name="last_name" />
-    </label>
-    <input type="submit" value="Add Contact">
-  </form>
+<div class="card">
+	<h2 class="text-center">New Contact</h2>
+	<div class="card-block">
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<form method="post" action="/contacts">
+					<div class="form-group">
+						<label for="first_name">First Name:</label>
+						<input type="text" name="first_name">
+					</div>
+					<div class="form-group">
+						<label for="last_name">Last Name:</label>
+						<input type="text" name="last_name">
+					</div>
+					<input class="btn btn-default" type="submit" name="submit" value="Add Contact">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
 
 <%- include footer.ejs %>

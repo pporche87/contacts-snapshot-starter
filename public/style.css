@@ -15,7 +15,6 @@ textarea {
   font-family: monospace;
 }
 
-
 nav {
   background-color: black;
   color: white;
@@ -35,8 +34,13 @@ nav .search-form input {
   border-radius: 5px;
   border: none;
   padding: 0.3em 0.5em;
+	color: black;
 }
 
+.auth {
+	margin-right: 10px;
+	padding: 10px;
+}
 
 .page-column {
   width: 700px;
