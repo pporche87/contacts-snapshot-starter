@@ -10,7 +10,7 @@ passport.use('local', new LocalStrategy({
 	passReqToCallback: true,
 	session: true
 },
-function(req, email, password, done) {
+function(request, email, password, done) {
 	const hash = bcrypt.hashSync(password, 10)
 	DbUsers.checkUserByEmail(email)
 		.then(user => {
@@ -32,6 +32,7 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser((id, done) => {
 	DbUsers.checkUserById(id)
 		.then(user => {
+
 			done(null, user)
 		})
 })

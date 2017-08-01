@@ -1,10 +1,14 @@
 const db = require('./db')
 
 const createUser = function(user){
-	return db.query(`INSERT INTO users (name, email, password)
-		VALUES ($1, $2, $3) RETURNING *`,
+	return db.query(`INSERT INTO users (name, email, password, role)
+		VALUES ($1, $2, $3, 'viewer') RETURNING *`,
 		[user.name, user.email, user.password])
 		.catch(error => error)
+}
+
+const updateRole = function(user){
+	return db.query(`UPDATE users SET role='admin' WHERE id=$1`, [user.id])
 }
 
 const checkUserByEmail = function(email){
@@ -21,6 +25,7 @@ const checkUserById = function(id){
 
 module.exports = {
 	createUser,
+	updateRole,
 	checkUserByEmail,
 	checkUserById
 }
