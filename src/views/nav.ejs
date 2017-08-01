@@ -10,8 +10,12 @@
 		<a href="/contacts/new">New Contact</a>
 	</div>
 	<div class="navbar-right">
-		<a href="/signup"><i class="fa fa-user-plus auth"></i></a>
-		<a href="/login"><i class="fa fa-sign-in auth"></i></a>
+		<% if (locals.isLoggedIn) { %>
+			<a class="btn btn-default auth" href="/logout">Log Out</a>
+		<% } else { %>
+			<a class="btn btn-default auth" href="/signup">Sign Up</a>
+			<a class="btn btn-default auth" href="/login">Login</a>
+		<% } %>
 	</div>
 
 </nav>

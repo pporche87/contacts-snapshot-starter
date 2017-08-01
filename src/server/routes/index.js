@@ -4,6 +4,7 @@ const DbContacts = require('../../db/contacts');
 const DbUsers = require('../../db/users')
 const bcrypt = require('bcrypt')
 const passport = require('../../config/auth')
+const isLoggedIn = require('../middleware')
 
 router.get('/signup', (request, response) => {
 	response.render('signup')
@@ -32,21 +33,24 @@ router.get('/login', (request, response) => {
 	response.render('login')
 })
 
-
 router.post('/login',
 	passport.authenticate('local', {
 		successRedirect: '/',
 		successFailure: '/login'
 	}))
 
+router.get('/logout', (request, response) => {
+	request.session.destroy(() => {
+		response.redirect('/login')
+	})
+})
 
-router.get('/', (request, response) => {
+router.get('/', isLoggedIn, (request, response) => {
 	DbContacts.getContacts()
 	.then((contacts) => {response.render('index', { contacts })})
 	.catch( err => console.log('err', err) )
 })
 
-router.use('/contacts', contacts); // /contacts/search
-// router.use('/auth', auth) // /auth/signup ...
+router.use('/contacts', isLoggedIn, contacts); // /contacts/search
 
 module.exports = router;
