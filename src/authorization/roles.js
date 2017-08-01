@@ -6,3 +6,8 @@ const CAPABILITY_ROLES = {
 	createContact: ['admin'],
 	deleteContact: ['admin']
 }
+
+module.exports = {
+	ALL_USER_ROLES,
+	CAPABILITY_ROLES
+}

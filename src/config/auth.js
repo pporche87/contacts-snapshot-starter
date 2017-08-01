@@ -4,6 +4,7 @@ const DbUsers = require('../db/users')
 const bcrypt = require('bcrypt')
 const {renderError} = require('../server/utils')
 
+
 passport.use('local', new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password',
@@ -11,15 +12,15 @@ passport.use('local', new LocalStrategy({
 	session: true
 },
 function(request, email, password, done) {
-	const hash = bcrypt.hashSync(password, 10)
+	const hash = bcrypt.hash(password, 10)
 	DbUsers.checkUserByEmail(email)
 		.then(user => {
 			if (!user) {
 				return done(null, false)
 			}
-			if (!bcrypt.compareSync(password, hash)) {
+			if (!bcrypt.compare(password, hash, function(error, response) {
 				return done(null, false)
-			}
+			})) 
 			return done(null, user[0])
 		})
 		.catch( error => error)
