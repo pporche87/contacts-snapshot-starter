@@ -1,7 +1,15 @@
 DROP TABLE IF EXISTS contacts;
 
 CREATE TABLE contacts (
-  id serial,
-  first_name varchar(255) NOT NULL,
-  last_name varchar(255) NOT NULL
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) NOT NULL,
+	email VARCHAR(255) NOT NULL UNIQUE,
+	password VARCHAR(255) NOT NULL,
+	date_joined TIMESTAMP DEFAULT NOW()
 );
