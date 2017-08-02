@@ -14,7 +14,10 @@ router.post('/signup', (request, response, next) => {
 	User.createUser(request.body.name, request.body.email, request.body.password)
 	.then(function(contact) {
 		if (contact)
-			return response.redirect(`/login`)
+			response.render(`login`, {
+				message: `Welcome to the Contacts app ${request.body.name}! Please login`,
+				success: true
+			})
 		next()
 	})
 	.catch( error => renderError(error, response, response) )
@@ -27,7 +30,10 @@ router.get('/login', (request, response) => {
 router.post('/login', function (request, response, next) {
 	passport.authenticate('local', function (error, user, info) {
 		if (error) { return next(error) }
-		if (!user) { return response.render('login', { message: 'email or password does not exist' }) }
+		if (!user) { return response.render('login', {
+			message: 'email or password does not exist',
+			success: false
+		}) }
 		request.logIn(user, function(error) {
 			if (error) { return next(error) }
 			return response.redirect('/')

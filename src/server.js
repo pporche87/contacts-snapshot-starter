@@ -24,6 +24,7 @@ app.use(passport.session())
 app.use((request, response, next) => {
   response.locals.query = ''
 	response.locals.message = ''
+	response.locals.success = null 
   next()
 })
 

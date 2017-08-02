@@ -3,9 +3,19 @@
 	<div class="card">
 		<h2 class="text-center">Login</h2>
 		<% if(message.length > 0) { %>
-		<div class="alert alert-danger">
-			<%= message %>
-		</div>
+
+			<% if(success === true) { %>
+				<div class="alert alert-success">
+					<%= message %>
+				</div>
+			<% } %>
+
+			<% if(success === false) { %>
+				<div class="alert alert-danger">
+					<%= message %>
+				</div>
+			<% } %>
+
 		<% } %>
 		<div class="card-block">
 			<div class="row">
