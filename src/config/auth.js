@@ -2,7 +2,8 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const DbUsers = require('../db/users')
 const bcrypt = require('bcrypt')
-const {renderError} = require('../server/utils')
+const { renderError } = require('../server/utils')
+const { comparePassword } = require('../utils/password')
 
 
 passport.use('local', new LocalStrategy({
@@ -12,18 +13,19 @@ passport.use('local', new LocalStrategy({
 	session: true
 },
 function(request, email, password, done) {
-	const hash = bcrypt.hash(password, 10)
-	DbUsers.checkUserByEmail(email)
-		.then(user => {
-			if (!user) {
+	return DbUsers.checkUserByEmail(email).then(user => {
+		user = user[0]
+		if (!user) {
+			return done(null, false)
+		}
+		return compare = comparePassword(password, user.password).then(bool => {
+			if(!bool) {
 				return done(null, false)
 			}
-			if (!bcrypt.compare(password, hash, function(error, response) {
-				return done(null, false)
-			})) 
-			return done(null, user[0])
+			return done(null, user)
 		})
-		.catch( error => error)
+	})
+	.catch(error => error)
 }))
 
 passport.serializeUser((user, done) => {
