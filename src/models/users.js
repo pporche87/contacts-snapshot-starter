@@ -1,5 +1,5 @@
 const DbUsers = require('../db/users')
-const makeHashedPassword = require('../utils/hash')
+const {makeHashedPassword} = require('../utils/password')
 
 const createUser = (name, email, password) => {
 	return makeHashedPassword(password).then(hash => {
