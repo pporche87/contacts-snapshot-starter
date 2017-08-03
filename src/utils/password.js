@@ -6,8 +6,6 @@ const makeHashedPassword = (plainTxtPassword) => {
 }
 
 const comparePassword = (plainTxtPassword, hash) => {
-	console.log(plainTxtPassword)
-	console.log(hash);
 	return bcrypt.compare(plainTxtPassword, hash)
 }
 

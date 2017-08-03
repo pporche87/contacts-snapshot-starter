@@ -2,13 +2,19 @@
 
   <h1>Contacts</h1>
 
+	<% if(message.length > 0) { %>
+		<div class="alert alert-danger text-center">
+			<%= message %>
+		</div>
+	<% } %>
+
   <div class="contact-list">
     <% contacts.forEach(function(contact){ %>
       <div class="contact-list-member">
         <a class="contact-link" href="/contacts/<%= contact.id %>">
           <%= contact.first_name %>&nbsp;<%= contact.last_name %>
         </a>
-        <a class="delete-contact" href="/contacts/<%= contact.id %>/delete" tabindex="-1">X</a>
+        <a class="delete-contact" href="/admin/<%= contact.id %>/delete" tabindex="-1">X</a>
       </div>
     <% }) %>
   </div>
