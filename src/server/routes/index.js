@@ -10,9 +10,9 @@ router.use(isLoggedIn)
 router.use('/contacts', contacts)
 
 router.get('/', (request, response) => {
-	DbContacts.getContacts()
-	.then((contacts) => {response.render('index', { contacts })})
-	.catch( error => error )
+  DbContacts.getContacts()
+    .then((contacts) => {response.render('index', { contacts })})
+    .catch( error => error )
 })
 
 

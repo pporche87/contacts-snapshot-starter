@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const passport = require('./config/authentication')
 const session = require('express-session')
-const morgan = require('morgan')
 const routes = require('./server/routes')
 
 app.set('view engine', 'ejs')
@@ -21,8 +20,8 @@ app.use(passport.session())
 
 app.use((request, response, next) => {
   response.locals.query = ''
-	response.locals.message = ''
-	response.locals.success = null
+  response.locals.message = ''
+  response.locals.success = null
   next()
 })
 
@@ -34,5 +33,5 @@ app.use((request, response) => {
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-  console.log(`http://localhost:${port}`)
+  // console.log(`http://localhost:${port}`)
 })
