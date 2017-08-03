@@ -14,7 +14,9 @@
         <a class="contact-link" href="/contacts/<%= contact.id %>">
           <%= contact.first_name %>&nbsp;<%= contact.last_name %>
         </a>
-        <a class="delete-contact" href="/admin/<%= contact.id %>/delete" tabindex="-1">X</a>
+				<% if (isAdmin) { %>
+					<a class="delete-contact" href="/admin/<%= contact.id %>/delete" tabindex="-1">X</a>
+				<% } %>
       </div>
     <% }) %>
   </div>

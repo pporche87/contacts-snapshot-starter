@@ -3,10 +3,11 @@ const contacts = require('./contacts')
 const authentication = require('./authentication')
 const admin = require('./admin')
 const DbContacts = require('../../db/contacts')
-const {isLoggedIn} = require('../middlewares')
+const {isLoggedIn, userIsAdmin} = require('../middlewares')
 
 router.use('/auth', authentication)
 router.use(isLoggedIn)
+router.use(userIsAdmin)
 router.use('/contacts', contacts)
 
 router.get('/', (request, response) => {

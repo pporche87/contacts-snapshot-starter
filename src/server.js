@@ -22,6 +22,7 @@ app.use((request, response, next) => {
   response.locals.query = ''
   response.locals.message = ''
   response.locals.success = null
+  response.locals.isAdmin = false
   next()
 })
 

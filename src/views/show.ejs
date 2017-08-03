@@ -1,7 +1,9 @@
 <%- include header.ejs %>
 
   <div class="contact-show-page-controls">
-    <a class="delete-contact" href="/admin/<%= contact.id %>/delete">delete</a>
+		<% if (isAdmin) { %>
+			<a class="delete-contact" href="/admin/<%= contact.id %>/delete">delete</a>
+		<% } %>
   </div>
 
   <h1><%= contact.first_name %>&nbsp;<%= contact.last_name %></h1>
