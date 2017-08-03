@@ -1,7 +1,5 @@
 const DbContacts = require('../../db/contacts')
 const {renderError} = require('../utils')
-// const {userHasAccess} = require('../middlewares')
-
 const router = require('express').Router()
 
 router.get('/:contactId', (request, response, next) => {
