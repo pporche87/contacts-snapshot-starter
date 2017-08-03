@@ -29,7 +29,7 @@ app.use((request, response, next) => {
 app.use('/', routes)
 
 app.use((request, response) => {
-  response.status(404).render('not_found')
+  response.status(404).render('errors/not_found')
 })
 
 const port = process.env.PORT || 3000
