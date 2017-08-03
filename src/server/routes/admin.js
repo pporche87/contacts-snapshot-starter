@@ -1,12 +1,9 @@
 const DbContacts = require('../../db/contacts')
 const {renderError} = require('../utils')
-const {userIsAdmin} = require('../middlewares')
-
 const router = require('express').Router()
 
 router.get('/new', (request, response) => {
-  const user = request.user[0]
-  if(userIsAdmin(user)){
+  if (response.locals.isAdmin === true) {
     response.render('new')
   } else {
     response.status('403').render('not_authorized')
@@ -14,8 +11,7 @@ router.get('/new', (request, response) => {
 })
 
 router.post('/', (request, response, next) => {
-  const user = request.user[0]
-  if(userIsAdmin(user)){
+  if (response.locals.isAdmin === true) {
     DbContacts.createContact(request.body)
       .then(function(contact) {
         if (contact) return response.redirect(`/contacts/${contact[0].id}`)
@@ -29,8 +25,7 @@ router.post('/', (request, response, next) => {
 
 router.get('/:contactId/delete', (request, response, next) => {
   const contactId = request.params.contactId
-  const user = request.user[0]
-  if(userIsAdmin(user)){
+  if (response.locals.isAdmin === true) {
     DbContacts.deleteContact(contactId)
       .then(function(contact) {
         if (contact) return response.redirect('/')

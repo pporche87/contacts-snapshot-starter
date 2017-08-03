@@ -7,7 +7,15 @@ const isLoggedIn = (request, response, next) => {
   }
 }
 
-const userIsAdmin = user => user.role === 'admin'
+const userIsAdmin = (request, response, next) => {
+  if (request.user[0].role === 'admin') {
+    response.locals.isAdmin = true
+    next()
+  } else {
+    response.locals.isAdmin = false
+    next()
+  }
+}
 
 module.exports = {
   isLoggedIn,
