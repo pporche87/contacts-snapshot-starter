@@ -7,13 +7,7 @@ const isLoggedIn = (request, response, next) => {
   }
 }
 
-const userIsAdmin = (user) => {
-  if (user.role === 'admin') {
-    return true
-  } else {
-    return false
-  }
-}
+const userIsAdmin = user => user.role === 'admin'
 
 module.exports = {
   isLoggedIn,

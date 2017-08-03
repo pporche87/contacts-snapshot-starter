@@ -1,7 +1,6 @@
 <%- include ./header %>
 
-	<div class="card">
-		<h2 class="text-center">Login</h2>
+	<div>
 		<% if(message.length > 0) { %>
 
 			<% if(success === true) { %>
@@ -17,7 +16,12 @@
 			<% } %>
 
 		<% } %>
-		<div class="card-block">
+	</div>
+	<div class="panel panel-default text-center">
+		<div class="panel-heading">
+			<h2>Login</h2>
+		</div>
+		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-4 col-md-offset-4">
 					<form method="post" action="/auth/login">
@@ -29,7 +33,7 @@
 							<label for="password">Password:</label>
 							<input type="password" name="password" placeholder="password" required>
 						</div>
-						<input class="btn btn-default" type="submit" name="submit" value="submit">
+						<input class="btn btn-success" type="submit" name="submit" value="submit">
 					</form>
 				</div>
 			</div>

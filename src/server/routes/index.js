@@ -15,7 +15,6 @@ router.get('/', (request, response) => {
     .catch( error => error )
 })
 
-
 router.use('/admin', admin)
 
 module.exports = router
