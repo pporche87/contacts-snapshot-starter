@@ -13,17 +13,24 @@ router.post('/signup', (request, response, next) => {
   if (password === passwordConfirm) {
     User.createUser(name, email, password)
       .then(function(contact) {
-        if (contact)
-          return response.render(`login`, {
-            message: `Welcome to the Contacts app ${name}! Please login.`,
-            success: true
+        if (contact.name === 'error') {
+          return response.render('signup', {
+            message: `User with email ${email} is already registered.`,
+            success: false
           })
-        next()
+        } else {
+          if (contact)
+            return response.render('login', {
+              message: `Welcome to the Contacts app ${name}! Please login with email ${email}.`,
+              success: true
+            })
+          next()
+        }
       })
       .catch( error => renderError(error, response, response) )
   } else {
-    response.render(`signup`, {
-      message: `Passwords do not match.`,
+    response.render('signup', {
+      message: 'Passwords do not match.',
       success: false
     })
   }
