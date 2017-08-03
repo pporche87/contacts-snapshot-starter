@@ -7,14 +7,14 @@
 				<input type="submit" style="display: none" />
 			</div>
 		</form>
-		<a href="/contacts/new">New Contact</a>
+		<a href="/admin/new">New Contact</a>
 	</div>
 	<div class="navbar-right">
 		<% if (locals.isLoggedIn) { %>
-			<a class="btn btn-default auth" href="/logout">Log Out</a>
+			<a class="btn btn-default auth" href="/auth/logout">Log Out</a>
 		<% } else { %>
-			<a class="btn btn-default auth" href="/signup">Sign Up</a>
-			<a class="btn btn-default auth" href="/login">Login</a>
+			<a class="btn btn-default auth" href="/auth/signup">Sign Up</a>
+			<a class="btn btn-default auth" href="/auth/login">Login</a>
 		<% } %>
 	</div>
 

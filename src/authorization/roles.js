@@ -4,7 +4,8 @@ const CAPABILITY_ROLES = {
 	viewContacts: ['admin', 'viewer'],
 	viewContact: ['admin', 'viewer'],
 	createContact: ['admin'],
-	deleteContact: ['admin']
+	deleteContact: ['admin'],
+	newContact: ['admin']
 }
 
 module.exports = {
