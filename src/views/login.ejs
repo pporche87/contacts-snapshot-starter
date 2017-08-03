@@ -1,22 +1,11 @@
 <%- include partials/header %>
 
-	<div>
-		<% if(message.length > 0) { %>
+	<% if (success) { %>
+		<%- include partials/success %>
+	<% } else { %>
+		<%- include partials/danger %>
+	<% } %>
 
-			<% if(success === true) { %>
-				<div class="alert alert-success text-center">
-					<%= message %>
-				</div>
-			<% } %>
-
-			<% if(success === false) { %>
-				<div class="alert alert-danger text-center">
-					<%= message %>
-				</div>
-			<% } %>
-
-		<% } %>
-	</div>
 	<div class="panel panel-default text-center">
 		<div class="panel-heading">
 			<h2>Login</h2>
